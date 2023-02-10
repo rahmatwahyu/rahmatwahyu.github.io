@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>AR Mug</title>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/dev/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-toggle-controls-component/dist/aframe-toggle-controls-component.min.js">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body style="margin : 0px; overflow: hidden;">
+
+  <a-scene markers_start embedded arjs vr-mode-ui="enabled: false">
+
+    <a-assets>
+      <a-asset-item id="marsrobot" src="./mug.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-marker registerevents type="pattern" url="./robot_talk2.patt" >
+      <a-entity position="0 0 0" rotation="0 0 0" scale="1 1 1" gltf-model="#marsrobot" sound="src: #MarsRobotSound; volume: 10; loop: false" >
+      </a-entity>
+    </a-marker>
+
+    <a-assets>
+      <audio id="MarsRobotSound" src="japan.mp3"></audio>
+    </a-assets>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+
+</body>
+
+<script>
+//Detect marker found and lost
+AFRAME.registerComponent('registerevents', {
+		init: function () {
+			const marker = this.el;
+
+			marker.addEventListener("markerFound", ()=> {
+
+          var sceneEl = document.querySelector('a-entity');
+          sceneEl.setAttribute('animation-mixer', 'loop:once');
+
+          var entity = document.querySelector('[sound]');
+          entity.components.sound.playSound();
+
+        console.log('Marker found');
+
+			});
+
+			marker.addEventListener("markerLost",() =>{
+
+        var sceneEl = document.querySelector('a-entity');
+        sceneEl.removeAttribute('animation-mixer');
+
+        var entity = document.querySelector('[sound]');
+        entity.components.sound.stopSound();
+
+        console.log(sceneEl);
+
+				console.log('Marker Lost ');
+			});
+		},
+	});
+
+</script>
+
+
+</html>
