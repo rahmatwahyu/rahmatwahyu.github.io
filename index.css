@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  background: #000;
+}
+
+canvas {
+  display: block;
+}
+
+#video {
+    visibility: hidden;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    border: solid 2px white;
+    transform: scale(.2);
+    transform-origin: right bottom;
+}

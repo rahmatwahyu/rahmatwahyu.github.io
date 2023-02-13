@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Dotcode_AR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <link rel="stylesheet" href="index.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="aframe-extras.min.js"></script>
+
+</head>
+<body>
+    <canvas id="preview"></canvas>
+    <canvas id="canvas"></canvas>
+    <video id="video" autoplay playsinline></video>
+    <input id="input1" value="hogehoge" type="hidden">
+
+    <script src="index.js"></script>
+    <script src="opencv_change.js"></script>
+    <script type="text/javascript" src="dotcode.js"></script>
+    <a-scene vr-mode-ui="enabled: false">
+        <a-assets>
+            <a-asset-item id="ar_smile" src="smile.gltf"></a-asset-item>
+            <a-asset-item id="ar_grape" src="grape.gltf"></a-asset-item>
+            <a-asset-item id="ar_fish" src="fish.gltf"></a-asset-item>
+            <a-asset-item id="ar_dolphin" src="dolphin.gltf"></a-asset-item>
+            <a-asset-item id="ar_candy" src="candy.gltf"></a-asset-item>
+            <a-asset-item id="ar_mag" src="mug.gltf"></a-asset-item>
+            <a-asset-item id="ar_wineglass" src="wine.gltf"></a-asset-item>
+            <audio id="voice_japanese" src="Kikori-Japanese-2sec_wait.mp3" preload="auto"></audio>
+            <audio id="voice_english" src="Kikori-English-2sec_wait.mp3" preload="auto"></audio>
+            <audio id="voice_spanish" src="Kikori-Spanish-2sec_wait.mp3" preload="auto"></audio>
+            <audio id="voice_french" src="Kikori-France-2sec_wait.mp3" preload="auto"></audio>
+            <audio id="voice_indonesian" src="Kikori-Indonesian-2sec_wait.mp3" preload="auto"></audio>
+
+        </a-assets>
+        <a-entity id="camera-wrapper" rotation="0 0 0" position="0 0 0">
+            <a-camera id="camera" position="0 0 0" rotation="0 0 0" look-contorls=""></a-camera>
+
+        </a-entity>
+        <a-entity light="type: ambient; color: #FFF; intensity: 1.5" position="0 1 0"></a-entity>
+        <a-entity light="type: directional; color: #FFF; intensity: 1.5" position="0 1 0"></a-entity>
+        <!--<a-entity id="entity_smile" gltf-model="#ar_smile" animation="startEvents:start_smile"></a-entity>-->
+        <!--<a-entity camera position="0 0 0" rotation="0 0 0" look-controls=""></a-entity>-->
+
+    </a-scene>
+
+</body>
+</html>
